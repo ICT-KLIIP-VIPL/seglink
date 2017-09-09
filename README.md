@@ -38,3 +38,7 @@ See ``tool/create_datasets.py''
 ## Evaluation
 
 See ``evaluate.py''
+
+
+## Q&A
+If you encounter the problem such as `'third_party/eigen3/unsupported/Eigen/CXX11/Tensor' file not found` while you compile, please check the solution [here](https://github.com/bgshih/seglink/issues/1#issuecomment-327790608)
