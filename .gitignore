@@ -1,0 +1,12 @@
+# files #
+
+*.tf
+*.log
+*.pkl
+*.so
+
+# floder #
+model/*
+exp/sgd/events*
+/seglink/cpp/build
+/seglink/__pycache__
