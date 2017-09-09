@@ -2,7 +2,7 @@
   "cuda_devices": "",
   "log_prefix": "finetune_ic15_",
   "resume": "vgg16",
-  "vgg16_model": "../model/checkpoint",
+  "vgg16_model": "../model/VGG_ILSVRC_16_layers_ssd.ckpt",
   "train_datasets": "../data/icdar_2015_incidental_train.tf",
   "image_height": 512,
   "image_width": 512,
