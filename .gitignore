@@ -6,7 +6,7 @@
 *.so
 
 # floder #
-model/*
+/model/*
 exp/sgd/events*
 /seglink/cpp/build
 /seglink/__pycache__

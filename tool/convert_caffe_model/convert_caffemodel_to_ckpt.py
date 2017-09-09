@@ -4,9 +4,10 @@ import joblib
 import numpy as np
 import argparse
 
+tf.app.flags.DEFINE_string('weight_init_method', 'xavier', 'Weight initialization method')
 parentdir = os.path.dirname(__file__)
-sys.path.insert(0, os.path.join(parentdir, '../../src'))
-import model_vgg16
+sys.path.insert(0, os.path.join(parentdir, '../../seglink'))
+import model_cnn
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('--model_scope', default='vgg16',
@@ -22,9 +23,9 @@ def convert_caffemodel_to_ckpt():
   caffe_weights = joblib.load(args.caffe_weights_path)
 
   # create network
-  vgg16 = model_vgg16.Vgg16Model()
+  vgg16 = model_cnn.SsdVgg16()
   model_scope = args.model_scope
-  vgg16.build_model(tf.placeholder(tf.float32, shape=[32,3,300,300]), scope=model_scope)
+  vgg16.build_model(tf.placeholder(tf.float32, shape=[32,300,300,3]), scope=model_scope)
 
   # auxillary functions for conversion
   def load_conv_weight(target_name, src_name):

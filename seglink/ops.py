@@ -4,6 +4,7 @@ import uuid
 import tensorflow as tf
 import math
 
+# tf.app.flags.DEFINE_string('weight_init_method', 'kaiming', '')
 FLAGS = tf.app.flags.FLAGS
 
 LIB_NAME = 'seglink'
@@ -184,7 +185,7 @@ def smooth_l1_loss(offsets, gt_offsets, scope=None):
     losses = (0.5 * tf.square(diff)) * lesser_mask + (diff - 0.5) * larger_mask
     return tf.reduce_sum(losses, 1)
 
-
+# TODO:fix error
 oplib = load_oplib(LIB_NAME)
 
 # map C++ operators to python objects

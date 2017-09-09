@@ -19,7 +19,7 @@ tf.app.flags.DEFINE_string('log_dir', '', 'Directory for saving checkpoints and 
 tf.app.flags.DEFINE_string('log_prefix', '', 'Log file name prefix')
 # training
 tf.app.flags.DEFINE_string('resume', 'vgg16', 'Training from loading VGG16 parameters ("vgg16"), resume a checkpoint ("resume"), or finetune a pretrained model ("finetune")')
-tf.app.flags.DEFINE_string('vgg16_model', '../data/VGG_ILSVRC_16_layers_ssd.ckpt', 'The pretrained VGG16 model checkpoint')
+tf.app.flags.DEFINE_string('vgg16_model', '../model/VGG_ILSVRC_16_layers_ssd.ckpt', 'The pretrained VGG16 model checkpoint')
 tf.app.flags.DEFINE_string('finetune_model', '', 'Finetuning model path')
 tf.app.flags.DEFINE_string('train_datasets', '', 'Training datasets file names separated by semicolons')
 tf.app.flags.DEFINE_string('weight_init_method', 'xavier', 'Weight initialization method')
@@ -179,14 +179,14 @@ class Solver:
         self.train_op = optimizer.apply_gradients(grads, global_step=self.global_step)
 
       # setup summaries
-      for var in tf.all_variables():
+      for var in tf.global_variables():# tf.all_variables():
         # remove the illegal ":x" part from the variable name
         summary_name = 'parameters/' + var.name.split(':')[0]
         tf.summary.histogram(summary_name, var, collections=['detailed'])
-      
+
       self.brief_summary_op = tf.summary.merge_all(key='brief')
       self.detailed_summary_op = tf.summary.merge_all(key='detailed')
-    
+
 
   def train_and_eval(self):
     # register handler for ctrl-c
@@ -209,7 +209,7 @@ class Solver:
           model_loader = tf.train.Saver()
           model_loader.restore(sess, latest_ckpt_path)
           logging.info('Resuming checkpoint %s' % latest_ckpt_path)
-      elif FLAGS.resume == 'finetune':
+      elif FLAGS.resume == 'finetune': # It just like the above 'resume'. The only difference is that this is a complete model.
         ckpt_path = FLAGS.finetune_model
         model_loader = tf.train.Saver()
         model_loader.restore(sess, ckpt_path)
@@ -217,7 +217,7 @@ class Solver:
         logging.info('Loaded pretrained model from %s' % ckpt_path)
       elif FLAGS.resume == 'vgg16':
         logging.info('Initializing model')
-        sess.run(tf.global_variables_initializer())
+        sess.run(tf.global_variables_initializer()) # initialize all variables
         vgg16_vars = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='ssd/vgg16/')
         pretrained_loader = tf.train.Saver(var_list=vgg16_vars)
         pretrained_loader.restore(sess, FLAGS.vgg16_model)

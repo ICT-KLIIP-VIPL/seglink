@@ -1,8 +1,8 @@
 {
-  "cuda_devices": "2,3",
+  "cuda_devices": "",
   "log_prefix": "finetune_ic15_",
   "resume": "finetune",
-  "finetune_model": "../exp/sgd/checkpoint",
+  "finetune_model": "../model/checkpoint",
   "train_datasets": "../data/icdar_2015_incidental_train.tf",
   "image_height": 512,
   "image_width": 512,

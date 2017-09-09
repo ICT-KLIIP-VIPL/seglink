@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 PROJECT(seglink)
 
-# compiler flags
+# compiler flags #-lcudart -L$CUDA_HOME/lib64
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ${OpenMP_CXX_FLAGS} -Wall -fPIC -D_GLIBCXX_USE_CXX11_ABI=0")
 
 # TensorFlow dependencies
@@ -14,7 +14,7 @@ MESSAGE(STATUS "Found TF_INC: " ${TF_INC})
 
 # target
 INCLUDE_DIRECTORIES(${TF_INC})
-ADD_LIBRARY(seglink SHARED 
+ADD_LIBRARY(seglink SHARED
   utilities.h
   sample_crop_bbox_op.cc
   encode_groundtruth_op.cc
