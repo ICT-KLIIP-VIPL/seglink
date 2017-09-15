@@ -1,13 +1,15 @@
-# files #
-
+# files
+!.gitignore
 *.tf
 *.log
 *.pkl
 *.so
 
-# floder #
-/model/*.*
-/data/*.*
+# do not ignore model and data floder
+model/
+data/
+!model/README.md
+!data/README.md
 exp/sgd/events*
 /seglink/cpp/build
 /seglink/__pycache__
