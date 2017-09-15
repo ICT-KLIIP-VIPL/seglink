@@ -8,8 +8,7 @@
 # do not ignore model and data floder
 model/
 data/
-!README.md
-!README.md
+!.gitkeep
 exp/sgd/events*
 /seglink/cpp/build
 /seglink/__pycache__
