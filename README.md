@@ -6,12 +6,23 @@ Detecting Oriented Text in Natural Images by Linking Segments (https://arxiv.org
 
 ## Prerequisites
 
-The project is written in Python3 and C++ and relies on TensorFlow v1.0 or newer. We have only tested it on Ubuntu 14.04. If you are using other Linux versions, we suggest using Docker. CMake (version >= 2.8) is required to compile the C++ code. Install TensorFlow (GPU-enabled) by following the instructions on https://www.tensorflow.org/install/. The project requires no other Python packages.
+The project is written in **Python3** and C++ and relies on TensorFlow v1.0 or newer. We
+have only tested it on Ubuntu 14.04. If you are using other Linux versions, we suggest using Docker. CMake (version >= 2.8) is required to compile the C++ code. Install TensorFlow (GPU-enabled) by following the instructions on https://www.tensorflow.org/install/. The project requires no other Python packages.
 
 On Ubuntu 14.04, install the required packages by
 ```
 sudo apt-get install cmake
 sudo pip install --upgrade tensorflow-gpu
+```
+
+Also, you may need to install some other packages.
+Feel free to check the packages below:
+
+```
+# use pip3 instead of pip to install packages for python3 instead of python2
+sudo install pip3
+pip3 install joblib
+pip3 install scikit-image
 ```
 
 ## Installation

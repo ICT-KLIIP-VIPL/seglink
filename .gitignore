@@ -1,0 +1,15 @@
+# files
+#!.gitignore
+*.tf
+*.log
+*.pkl
+*.so
+
+# do not ignore model and data floder
+model/
+data/
+!model/.gitkeep
+!data/.gitkeep
+exp/sgd/events*
+/seglink/cpp/build
+/seglink/__pycache__
