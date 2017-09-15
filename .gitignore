@@ -8,8 +8,8 @@
 # do not ignore model and data floder
 model/
 data/
-!model/README.md
-!data/README.md
+!README.md
+!README.md
 exp/sgd/events*
 /seglink/cpp/build
 /seglink/__pycache__
