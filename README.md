@@ -46,10 +46,7 @@ See ``tool/create_datasets.py''
 ./manage.py train <exp-directory>
 ```
 
-For example
-```
-./manage.py train ./exp/sgd/ pretrain
-```
+For detaile information, please see [this](HowToTrain.md)
 
 ## Evaluation
 
